@@ -1,112 +1,200 @@
-create database homework;
-use homework;
-CREATE TABLE devices (brand VARCHAR(50), model VARCHAR(50), cpu VARCHAR(50), frequency REAL, ram INT, os VARCHAR(50), price INT);
-show tables;
-+--------------------+
-| Tables_in_homework |
-+--------------------+
-| devices            |
-+--------------------+
-INSERT INTO devices (brand, model, cpu, frequency, ram, os, price) VALUES
- ('HP', 'Pavilion', 'Intel i5', 2.5, 8, 'Windows', 700),
-('HP', 'Envy', 'Intel i5', 2.7, 16, 'Windows', 900),
-    
-('Dell', 'Inspiron', 'Intel i7', 3.0, 16, 'Windows', 1000),
-     ('Dell', 'XPS', 'Intel i7', 3.2, 32, 'Windows', 1500),
-    
-     ('Lenovo', 'IdeaPad', 'Ryzen 5', 2.6, 8, 'Windows', 650),
-     ('Lenovo', 'ThinkPad', 'Ryzen 5', 2.8, 16, 'Windows', 850),
-    
-     ('Asus', 'VivoBook', 'Intel i3', 2.1, 8, 'Windows', 500),
-     ('Asus', 'ZenBook', 'Intel i3', 2.3, 16, 'Windows', 750),
-    
-     ('Acer', 'Aspire', 'Ryzen 7', 3.0, 16, 'Windows', 900),
-     ('Acer', 'Swift', 'Ryzen 7', 3.2, 32, 'Windows', 1200),
-    
-     ('Apple', 'MacBook Air', 'M1', 3.2, 8, 'macOS', 1000),
-     ('Apple', 'MacBook Pro', 'M1', 3.4, 16, 'macOS', 1500),
-    
-     ('MSI', 'GF63', 'Intel i5', 2.5, 8, 'Windows', 800),
-     ('MSI', 'Katana', 'Intel i5', 2.7, 16, 'Windows', 1100),
-    
-     ('Samsung', 'Galaxy Book', 'Intel i7', 3.1, 16, 'Windows', 1200),
-     ('Samsung', 'Galaxy Book Pro', 'Intel i7', 3.3, 32, 'Windows', 1600),
-    
-     ('Huawei', 'MateBook D', 'Ryzen 5', 2.5, 8, 'Windows', 700),
-     ('Huawei', 'MateBook X', 'Ryzen 5', 2.9, 16, 'Windows', 1000),
-    
-    ('Razer', 'Blade 15', 'Intel i7', 3.0, 16, 'Windows', 2000),
-    ('Razer', 'Blade Stealth', 'Intel i7', 3.2, 16, 'Windows', 1800);
+CREATE DATABASE shop_db;
+Query OK, 1 row affected (0.16 sec)
 
-    select * from devices;
-+---------+-----------------+----------+-----------+------+---------+-------+
-| brand   | model           | cpu      | frequency | ram  | os      | price |
-+---------+-----------------+----------+-----------+------+---------+-------+
-| HP      | Pavilion        | Intel i5 |       2.5 |    8 | Windows |   700 |
-| HP      | Envy            | Intel i5 |       2.7 |   16 | Windows |   900 |
-| Dell    | Inspiron        | Intel i7 |         3 |   16 | Windows |  1000 |
-| Dell    | XPS             | Intel i7 |       3.2 |   32 | Windows |  1500 |
-| Lenovo  | IdeaPad         | Ryzen 5  |       2.6 |    8 | Windows |   650 |
-| Lenovo  | ThinkPad        | Ryzen 5  |       2.8 |   16 | Windows |   850 |
-| Asus    | VivoBook        | Intel i3 |       2.1 |    8 | Windows |   500 |
-| Asus    | ZenBook         | Intel i3 |       2.3 |   16 | Windows |   750 |
-| Acer    | Aspire          | Ryzen 7  |         3 |   16 | Windows |   900 |
-| Acer    | Swift           | Ryzen 7  |       3.2 |   32 | Windows |  1200 |
-| Apple   | MacBook Air     | M1       |       3.2 |    8 | macOS   |  1000 |
-| Apple   | MacBook Pro     | M1       |       3.4 |   16 | macOS   |  1500 |
-| MSI     | GF63            | Intel i5 |       2.5 |    8 | Windows |   800 |
-| MSI     | Katana          | Intel i5 |       2.7 |   16 | Windows |  1100 |
-| Samsung | Galaxy Book     | Intel i7 |       3.1 |   16 | Windows |  1200 |
-| Samsung | Galaxy Book Pro | Intel i7 |       3.3 |   32 | Windows |  1600 |
-| Huawei  | MateBook D      | Ryzen 5  |       2.5 |    8 | Windows |   700 |
-| Huawei  | MateBook X      | Ryzen 5  |       2.9 |   16 | Windows |  1000 |
-| Razer   | Blade 15        | Intel i7 |         3 |   16 | Windows |  2000 |
-| Razer   | Blade Stealth   | Intel i7 |       3.2 |   16 | Windows |  1800 |
-+---------+-----------------+----------+-----------+------+---------+-------+
+mysql> USE shop_db;
+Database changed
+mysql> CREATE TABLE sales (
+    ->     id INT PRIMARY KEY,
+    ->     product_name VARCHAR(50),
+    ->     category VARCHAR(50),
+    ->     price INT,
+    ->     quantity INT,
+    ->     sale_date DATE
+    -> );
+Query OK, 0 rows affected (0.25 sec)
 
-select * from devices order by price desc limit 1;
-+-------+----------+----------+-----------+------+---------+-------+
-| brand | model    | cpu      | frequency | ram  | os      | price |
-+-------+----------+----------+-----------+------+---------+-------+
-| Razer | Blade 15 | Intel i7 |         3 |   16 | Windows |  2000 |
-+-------+----------+----------+-----------+------+---------+-------+
+mysql> INSERT INTO sales VALUES (1, 'Laptop', 'Electronics', 800, 2, '2025-01-01');
+Query OK, 1 row affected (0.07 sec)
 
+mysql> INSERT INTO sales VALUES (2, 'Phone', 'Electronics', 600, 3, '2025-01-01');
+Query OK, 1 row affected (0.01 sec)
 
-select * from devices order by price limit 1;
-+-------+----------+----------+-----------+------+---------+-------+
-| brand | model    | cpu      | frequency | ram  | os      | price |
-+-------+----------+----------+-----------+------+---------+-------+
-| Asus  | VivoBook | Intel i3 |       2.1 |    8 | Windows |   500 |
-+-------+----------+----------+-----------+------+---------+-------+
+mysql> INSERT INTO sales VALUES (3, 'TV', 'Electronics', 900, 1, '2025-01-02');
+Query OK, 1 row affected (0.01 sec)
 
+mysql> INSERT INTO sales VALUES (4, 'Headphones', 'Electronics', 150, 5, '2025-01-03');
+Query OK, 1 row affected (0.01 sec)
 
-select frequency from devices where price between 400 and 1000 and cpu like "%Intel%";
-select frequency from devices where price between 400 and 1000 and cpu like "%Intel%";
-+-----------+
-| frequency |
-+-----------+
-|       2.5 |
-|       2.7 |
-|         3 |
-|       2.1 |
-|       2.3 |
-|       2.5 |
-+-----------+
+mysql> INSERT INTO sales VALUES (5, 'Table', 'Furniture', 300, 1, '2025-01-01');
+Query OK, 1 row affected (0.01 sec)
 
+mysql> INSERT INTO sales VALUES (6, 'Chair', 'Furniture', 100, 4, '2025-01-02');
+Query OK, 1 row affected (0.01 sec)
 
+mysql> INSERT INTO sales VALUES (7, 'Sofa', 'Furniture', 1200, 1, '2025-01-03');
+Query OK, 1 row affected (0.01 sec)
 
-select count(*) from devices where brand = "apple";
-+----------+
-| count(*) |
-+----------+
-|        2 |
-+----------+
+mysql> INSERT INTO sales VALUES (8, 'Bed', 'Furniture', 900, 1, '2025-01-04');
+Query OK, 1 row affected (0.00 sec)
 
+mysql> INSERT INTO sales VALUES (9, 'T-shirt', 'Clothing', 40, 6, '2025-01-01');
+Query OK, 1 row affected (0.01 sec)
 
+mysql> INSERT INTO sales VALUES (10, 'Jeans', 'Clothing', 70, 3, '2025-01-02');
+Query OK, 1 row affected (0.01 sec)
 
+mysql> INSERT INTO sales VALUES (11, 'Jacket', 'Clothing', 120, 2, '2025-01-03');
+Query OK, 1 row affected (0.01 sec)
 
-select * from devices where os= "Windows" and ram>8 and brand = "Asus" order by price;
-+-------+---------+----------+-----------+------+---------+-------+
-| brand | model   | cpu      | frequency | ram  | os      | price |
-+-------+---------+----------+-----------+------+---------+-------+
-| Asus  | ZenBook | Intel i3 |       2.3 |   16 | Windows |   750 |
+mysql> INSERT INTO sales VALUES (12, 'Shoes', 'Clothing', 90, 4, '2025-01-04');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO sales VALUES (13, 'Apple', 'Food', 2, 20, '2025-01-01');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO sales VALUES (14, 'Bread', 'Food', 3, 15, '2025-01-02');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO sales VALUES (15, 'Milk', 'Food', 4, 10, '2025-01-03');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO sales VALUES (16, 'Cheese', 'Food', 8, 5, '2025-01-04');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO sales VALUES (17, 'Notebook', 'Stationery', 5, 10, '2025-01-01');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO sales VALUES (18, 'Pen', 'Stationery', 2, 25, '2025-01-02');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO sales VALUES (19, 'Marker', 'Stationery', 4, 12, '2025-01-03');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO sales VALUES (20, 'Folder', 'Stationery', 6, 8, '2025-01-04');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT category, SUM(quantity) AS total_products_sold
+    -> FROM sales
+    -> GROUP BY category;
++-------------+---------------------+
+| category    | total_products_sold |
++-------------+---------------------+
+| Electronics |                  11 |
+| Furniture   |                   7 |
+| Clothing    |                  15 |
+| Food        |                  50 |
+| Stationery  |                  55 |
++-------------+---------------------+
+5 rows in set (0.08 sec)
+
+mysql> SELECT category, SUM(price * quantity) AS total_sales_amount
+    -> FROM sales
+    -> GROUP BY category;
++-------------+--------------------+
+| category    | total_sales_amount |
++-------------+--------------------+
+| Electronics |               5050 |
+| Furniture   |               2800 |
+| Clothing    |               1050 |
+| Food        |                165 |
+| Stationery  |                196 |
++-------------+--------------------+
+5 rows in set (0.10 sec)
+
+mysql> SELECT category, AVG(price) AS average_price
+    -> FROM sales
+    -> GROUP BY category;
++-------------+---------------+
+| category    | average_price |
++-------------+---------------+
+| Electronics |      612.5000 |
+| Furniture   |      625.0000 |
+| Clothing    |       80.0000 |
+| Food        |        4.2500 |
+| Stationery  |        4.2500 |
++-------------+---------------+
+5 rows in set (0.01 sec)
+
+mysql> SELECT sale_date, SUM(price * quantity) AS total_revenue
+    -> FROM sales
+    -> GROUP BY sale_date;
++------------+---------------+
+| sale_date  | total_revenue |
++------------+---------------+
+| 2025-01-01 |          4030 |
+| 2025-01-02 |          1605 |
+| 2025-01-03 |          2278 |
+| 2025-01-04 |          1348 |
++------------+---------------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> SELECT SUM(price * quantity) AS electronics_revenue
+    -> FROM sales
+    -> WHERE category = 'Electronics';
++---------------------+
+| electronics_revenue |
++---------------------+
+|                5050 |
++---------------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT category, SUM(price * quantity) AS total_sales_amount
+    -> FROM sales
+    -> GROUP BY category
+    -> HAVING SUM(price * quantity) > 2000;
++-------------+--------------------+
+| category    | total_sales_amount |
++-------------+--------------------+
+| Electronics |               5050 |
+| Furniture   |               2800 |
++-------------+--------------------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT category, AVG(price) AS average_price
+    -> FROM sales
+    -> GROUP BY category
+    -> HAVING AVG(price) > 100;
++-------------+---------------+
+| category    | average_price |
++-------------+---------------+
+| Electronics |      612.5000 |
+| Furniture   |      625.0000 |
++-------------+---------------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT SUM(quantity) AS total_products_sold
+    -> FROM sales
+    -> WHERE sale_date = '2025-01-01';
++---------------------+
+| total_products_sold |
++---------------------+
+|                  42 |
++---------------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT category, SUM(quantity) AS total_quantity
+    -> FROM sales
+    -> GROUP BY category
+    -> ORDER BY total_quantity DESC
+    -> LIMIT 1;
++------------+----------------+
+| category   | total_quantity |
++------------+----------------+
+| Stationery |             55 |
++------------+----------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT category, SUM(price * quantity) AS total_revenue
+    -> FROM sales
+    -> WHERE quantity > 3
+    -> GROUP BY category;
++-------------+---------------+
+| category    | total_revenue |
++-------------+---------------+
+| Electronics |           750 |
+| Furniture   |           400 |
+| Clothing    |           600 |
+| Food        |           165 |
+| Stationery  |           196 |
++-------------+---------------+
